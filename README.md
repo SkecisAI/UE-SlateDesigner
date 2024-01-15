@@ -1,2 +1,4 @@
 # UE-SlateDesigner
-Slate Designer real-time preivew
+- Slate设计器，实时预览布局
+
+![](./Resources/SlateDesigner.gif)
