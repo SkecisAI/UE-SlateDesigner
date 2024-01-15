@@ -1,0 +1,16 @@
+﻿SNew(SBox)
+.Padding(10.0f)
+[
+    SNew(SHorizontalBox)
+    
+    + SHorizontalBox::Slot()
+    [
+        SNew(SButton)
+    ]
+    
+    + SHorizontalBox::Slot()
+    [
+        SNew(STextBlock)
+        .Text("Hello")
+    ]
+]
