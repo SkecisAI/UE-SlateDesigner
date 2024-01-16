@@ -12,7 +12,6 @@ class SLATEDESIGNER_API ISlateWrapper
 public:
 	// override
 	virtual void AddSlot(TSharedPtr<SWidget> ChildWidget) {}
-	virtual void SetSlotAttributes() {}
 	virtual void AddSlotAttrbute(const FString& AttributeLine) {}
 	// override
 

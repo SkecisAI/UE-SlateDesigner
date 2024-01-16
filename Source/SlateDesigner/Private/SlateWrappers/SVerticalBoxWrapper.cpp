@@ -1,12 +1,11 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SlateWrappers/SHorizontalBoxWrapper.h"
+#include "SlateWrappers/SVerticalBoxWrapper.h"
 
 #include "SlateWrappers/AttributeConverter.h"
 
-
-void SHorizontalBoxWrapper::AddSlot(TSharedPtr<SWidget> ChildWidget)
+void SVerticalBoxWrapper::AddSlot(TSharedPtr<SWidget> ChildWidget)
 {
 	Widget->AddSlot()[ChildWidget.ToSharedRef()];
 	auto& Slot = Widget->GetSlot(Widget->NumSlots() - 1);
@@ -27,28 +26,27 @@ void SHorizontalBoxWrapper::AddSlot(TSharedPtr<SWidget> ChildWidget)
 		}
 		else
 		{
-			UE_LOG(LogTemp, Display, TEXT("Ignore Attribute for SHorizontalBox: %s"), *AttributeLine);
+			UE_LOG(LogTemp, Display, TEXT("Ignore Attribute for SVerticalBox: %s"), *AttributeLine);
 		}
 	}
 
 	SlotAttributeLines.Empty();
 }
 
-void SHorizontalBoxWrapper::AddSlotAttrbute(const FString& AttributeLine)
+void SVerticalBoxWrapper::AddSlotAttrbute(const FString& AttributeLine)
 {
 	SlotAttributeLines.Add(AttributeLine);
 }
 
-SHorizontalBoxWrapper::SHorizontalBoxWrapper()
-{
-	Widget = SNew(SHorizontalBox);
-}
-
-void SHorizontalBoxWrapper::SetAttribute(const FString& AttrLine)
+SVerticalBoxWrapper::SVerticalBoxWrapper()
 {
 }
 
-TSharedPtr<SWidget> SHorizontalBoxWrapper::GetWidget()
+void SVerticalBoxWrapper::SetAttribute(const FString& AttrLine)
+{
+}
+
+TSharedPtr<SWidget> SVerticalBoxWrapper::GetWidget()
 {
 	return Widget;
 }

@@ -8,21 +8,22 @@
 /**
  * 
  */
-class SLATEDESIGNER_API SHorizontalBoxWrapper : public ISlateWrapper
+
+class SLATEDESIGNER_API SVerticalBoxWrapper : public ISlateWrapper
 {
 public:
 	virtual void AddSlot(TSharedPtr<SWidget> ChildWidget) override;
 	
 	virtual void AddSlotAttrbute(const FString& AttributeLine) override;
 
-	SHorizontalBoxWrapper();
+	SVerticalBoxWrapper();
 	
 	virtual void SetAttribute(const FString& AttrLine) override;
 	
 	virtual TSharedPtr<SWidget> GetWidget() override;
 
 private:
-	TSharedPtr<SHorizontalBox> Widget;
+	TSharedPtr<SVerticalBox> Widget;
 
 	TArray<FString> SlotAttributeLines;
 };

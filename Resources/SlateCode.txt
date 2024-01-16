@@ -4,6 +4,8 @@
     SNew(SHorizontalBox)
     
     + SHorizontalBox::Slot()
+    .Padding(10.0f)
+    .HAlign(HAlign_Left)
     [
         SNew(SButton)
     ]

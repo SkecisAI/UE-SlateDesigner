@@ -32,8 +32,6 @@ void SSlateView::Construct(const FArguments& InArgs, TSharedPtr<SSlateCodeEditor
 		.Content()
 		[
 			SNew(SBox)
-			.HeightOverride(600.0f)
-			.WidthOverride(600.0f)
 			[
 				SNew(SGridPanel)
 				.FillColumn(1, 1.0f)
@@ -47,6 +45,7 @@ void SSlateView::Construct(const FArguments& InArgs, TSharedPtr<SSlateCodeEditor
 					.BorderBackgroundColor(FLinearColor(FColor(50, 50, 50)))
 				]
 				+ SGridPanel::Slot(1, 1)
+				.Padding(5.0f)
 				[
 					SNew(SOverlay)
 					.Visibility(EVisibility::Visible)
@@ -57,7 +56,7 @@ void SSlateView::Construct(const FArguments& InArgs, TSharedPtr<SSlateCodeEditor
 					.VAlign(VAlign_Fill)
 					[
 						SNew(SBorder)
-						.Padding(FMargin(0))
+						.Padding(FMargin(0.1))
 						[
 							SNew(SDPIScaler)
 							[
@@ -135,9 +134,10 @@ TSharedRef<SWidget> SSlateView::TranslateSlateRecursively(int& CurLineIndex)
 		{
 			while (CurLineIndex < SlateStringLines.Num() && !SlateStringLines[CurLineIndex].Contains("["))
 			{
-				if (SlateStringLines[CurLineIndex].StartsWith("."))
+				FString AttributeLine = SlateStringLines[CurLineIndex].TrimStart();
+				if (AttributeLine.StartsWith("."))
 				{
-					Wrapper->AddSlotAttrbute(SlateStringLines[CurLineIndex]);
+					Wrapper->AddSlotAttrbute(AttributeLine);
 				}
 				++ CurLineIndex;
 			}
@@ -151,7 +151,6 @@ TSharedRef<SWidget> SSlateView::TranslateSlateRecursively(int& CurLineIndex)
 				++ CurLineIndex;
 				TSharedPtr<SWidget> Widget = TranslateSlateRecursively(CurLineIndex);
 				Wrapper->AddSlot(Widget);
-				Wrapper->SetSlotAttributes();
 			}
 		}
 		else if (Line.StartsWith("]"))
